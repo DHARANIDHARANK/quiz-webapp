@@ -1,12 +1,12 @@
 #!/bin/bash
 
 cd loginpage
-docker build -t loginpage .
+docker build -t this23/quizapp:loginpage .
 
 cd ..
 
 cd backend 
-docker build -t quizback .
+docker build -t this23/quizapp:quizback .
 
 
 cd ..
