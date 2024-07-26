@@ -1,4 +1,4 @@
-FROM node:14-alpine as builder
+FROM node:14-alpine as build
 
 WORKDIR /app
 
@@ -8,11 +8,11 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npm run build --unhandled-rejections=strict
 
 FROM nginx:alpine
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=build /app/build /usr/share/nginx/html
 
 EXPOSE 5173
 
