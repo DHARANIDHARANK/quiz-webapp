@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -27,7 +28,7 @@ const SignUpPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema),
   });
-
+  const navigate = useNavigate();
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -38,6 +39,8 @@ const SignUpPage = () => {
         localStorage.setItem('userId', response.data.userId); 
         setSuccess('Signed up successfully');
         setError('');
+        // Redirect to /question 
+        navigate('/questions');
       } else {
         setError(response.data.message || 'Sign up failed, please try again');
         setSuccess('');
