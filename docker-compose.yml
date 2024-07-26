@@ -2,27 +2,27 @@ version : '3.8'
 
 services:
   loginpage:
-    image: loginpage
+    image: this23/loginpage:loginpage
     container_name: loginpage-container
     ports:
       - "5173:5173"
     depends_on:
       - backend
-      - mongodb
+   
 
   
   backend:
-    image: quizback
+    image:  this23/quizapp:quizback
     container_name: backend-container
     ports:
       - "3000:3000"
     depends_on:
       - mongodb
     environment:
-      - DBLOGIN = mongodb+srv://dharanidharank19ece:ZdIYvzpTVfVWiadt@cluster1.xqwaydo.mongodb.net/TEST?retryWrites=true=value
+          - DBLOGIN = mongodb+srv://dharanidharank19ece:ZdIYvzpTVfVWiadt@cluster1.xqwaydo.mongodb.net/TEST?retryWrites=true=value
+
     entrypoint: ["./build.sh"]
 
-  
   mongodb:
     image: mongo:latest
     container_name: mongodb-container
