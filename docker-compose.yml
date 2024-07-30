@@ -2,7 +2,7 @@ version : '3.8'
 
 services:
   loginpage:
-    image: this23/quizapp:back-v10
+    image: this23/quizapp:back-v11
     container_name: loginpage-container
     ports:
       - "5173:5173"
