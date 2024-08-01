@@ -21,8 +21,6 @@ services:
     environment:
           - DBLOGIN = mongodb+srv://dharanidharank19ece:ZdIYvzpTVfVWiadt@cluster1.xqwaydo.mongodb.net/TEST?retryWrites=true=value
 
-    entrypoint: ["./build.sh"]
-
   mongodb:
     image: mongo:latest
     container_name: mongodb-container
