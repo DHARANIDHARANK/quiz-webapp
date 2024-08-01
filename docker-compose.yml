@@ -15,7 +15,7 @@ services:
     image:  this23/quizapp:${TAG2}
     container_name: backend-container
     ports:
-      - "3000:3000"
+      - "3005:3000"
     depends_on:
       - mongodb
     environment:
