@@ -12,12 +12,18 @@ const saveScore = async (score) => {
   try {
     const response = await axios.post(
       'http://localhost:3000/api/save-score',
-      { score, userId }, 
+      { score, userId },
       { headers: { Authorization: `Bearer ${token}` } }
     );
     console.log(response.data.message);
   } catch (error) {
-    console.error('Error saving score:', error.response?.data?.message || error.message);
+    if (error.response) {
+      console.error('Error saving score:', error.response.data.message);
+    } else if (error.request) {
+      console.error('Error saving score: No response received from server.');
+    } else {
+      console.error('Error saving score:', error.message);
+    }
   }
 };
 

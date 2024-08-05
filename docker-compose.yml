@@ -2,26 +2,26 @@ version : '3.8'
 
 services:
   loginpage:
-    image: loginpage
+    image: this23/quizapp:${TAG1}
     container_name: loginpage-container
     ports:
       - "5173:5173"
     depends_on:
       - backend
-      - mongodb
+   
 
   
   backend:
-    image: quizback
+    image:  this23/quizapp:${TAG2}
     container_name: backend-container
     ports:
       - "3005:3000"
     depends_on:
       - mongodb
+    env_file:
+      - ./backend/.env
     environment:
       - DBLOGIN = mongodb+srv://dharanidharank19ece:ZdIYvzpTVfVWiadt@cluster1.xqwaydo.mongodb.net/TEST?retryWrites=true=value
-  
-
   
   mongodb:
     image: mongo:latest
@@ -30,7 +30,9 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db     
-  
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootuser
 
 volumes:
   mongo-data:
