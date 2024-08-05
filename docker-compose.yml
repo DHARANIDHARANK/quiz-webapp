@@ -18,6 +18,8 @@ services:
       - "3005:3000"
     depends_on:
       - mongodb
+    env_file:
+      - ./backend/.env
     environment:
           - DB_URI=mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true
 
@@ -28,7 +30,9 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db     
-  
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootuser
 
 volumes:
   mongo-data:
