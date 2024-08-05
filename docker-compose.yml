@@ -15,12 +15,12 @@ services:
     image: quizback
     container_name: backend-container
     ports:
-      - "3000:3000"
+      - "3005:3000"
     depends_on:
       - mongodb
     environment:
       - DBLOGIN = mongodb+srv://dharanidharank19ece:ZdIYvzpTVfVWiadt@cluster1.xqwaydo.mongodb.net/TEST?retryWrites=true=value
-    entrypoint: ["./build.sh"]
+  
 
   
   mongodb:
@@ -34,5 +34,6 @@ services:
 
 volumes:
   mongo-data:
+
 
 
